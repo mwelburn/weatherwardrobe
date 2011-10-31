@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<% if user_signed_in? %>
+  Welcome <%= current_user.email %> | Logout
+<% else %>
+  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<% end %>
+
 <%= yield %>
 
 </body>

@@ -207,4 +207,14 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+
+  # facebook authentication
+  if Rails.env.development?
+    config.omniauth :facebook, '198633203509595', '8125d8419c218d2f8c09a939d551a42b'
+  elsif Rails.env.test?
+    #don't really have a test environment, so it's just the same as dev for now
+    config.omniauth :facebook, '198633203509595', '8125d8419c218d2f8c09a939d551a42b'
+  elsif Rails.env.production?
+    config.omniauth :facebook, '297922033569075', '668dcc06de24f596e4e2727a5f7e3c16'
+  end
 end

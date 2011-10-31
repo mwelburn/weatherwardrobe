@@ -37,6 +37,7 @@ end
 # CUSTOM GEM DEFINITIONS
 
 gem 'devise'
+gem 'oa-oauth', :require => 'omniauth/oauth'
 
 group :development do
   gem 'sqlite3'
