@@ -15,7 +15,7 @@ Weatherwardrobe::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-# TODO - set this back to false and precompile myself if this ever goes live
+# TODO - set this back to false and precompile myself if this ever goes live - http://devcenter.heroku.com/articles/rails31_heroku_cedar
   config.assets.compile = true
 
   # Generate digests for assets URLs
