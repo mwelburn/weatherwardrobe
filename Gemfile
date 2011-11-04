@@ -48,4 +48,5 @@ end
 group :production do
   gem 'heroku'
   gem 'pg' #postgreSQL for heroku
+  gem 'execjs'
 end
