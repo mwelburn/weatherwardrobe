@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  # TODO - when invoked as edit user, complains that it is missing a parameter
   def authenticate_user!
     if !current_user
       # This should work, but session is lost. See https://github.com/plataformatec/devise/issues/1357
       # session[:return_to] = request.fullpath
-      redirect_to user_omniauth_authorize_path(:google_apps, :origin => request.fullpath)
+      redirect_to user_omniauth_authorize_path(:facebook, :origin => request.fullpath)
     end
   end
 

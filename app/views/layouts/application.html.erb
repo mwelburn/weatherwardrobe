@@ -7,12 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<% if user_signed_in? %>
-  Welcome <%= current_user.email %> | <%= link_to "Logout", destroy_user_session_path %>
-<% else %>
-  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>  | <%= link_to "Sign in", new_user_session_path %> |  <%= link_to "Sign up", new_user_registration_path %>
-<% end %>
+  <ul class="hmenu">
+    <%= render 'shared/navigation' %>
+  </ul>
+  <%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <%- end -%>
 
 <%= yield %>
 

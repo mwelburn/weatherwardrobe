@@ -5,7 +5,7 @@ Weatherwardrobe::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
 
-  resources :users
+#  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
