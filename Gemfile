@@ -48,5 +48,4 @@ end
 group :production do
   gem 'heroku'
   gem 'pg' #postgreSQL for heroku
-  gem 'therubyracer' #javascript runtime for heroku
 end
