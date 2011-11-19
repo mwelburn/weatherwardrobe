@@ -5,6 +5,8 @@ Weatherwardrobe::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
 
+  match '/weather_via_ajax' => 'home#weather_via_ajax', :as => :weather_via_ajax
+
 #  resources :users
 
   # The priority is based upon order of creation:
