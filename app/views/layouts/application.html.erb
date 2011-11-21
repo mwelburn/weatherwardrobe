@@ -5,6 +5,82 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+    <!-- TODO - should we move this into an imported javascript file -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-25054049-3']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+
+    <script type="text/javascript">
+      //default is the sears tower
+      var latitude = '41.8789';
+      var longitude = '-87.6358';
+
+      // TODO - need to figure out if there's a way to do this for older versions of IE that don't support HTML5
+      function initGeolocation()
+      {
+          if (navigator.geolocation)
+          {
+                browserSupportFlag = true;
+                navigator.geolocation.getCurrentPosition(
+                    setCoordinates,
+                    handleNoGeolocation,
+                    {
+                        timeout: (5 * 1000),
+                        maximumAge: (1000 * 60 * 15),
+                        enableHighAccuracy: true
+                    }
+                );
+          } else {
+              handleNoGeolocation(null);
+          }
+      }
+
+      function setCoordinates(position)
+      {
+          latitude = position.coords.latitude;
+          longitude = position.coords.longitude;
+
+          //alert("latitude: " + latitude + "\nlongitude: " + longitude);
+          //TODO - Ajax call to controller to retrieve weather and update front end
+          $.ajax(
+          {
+              type: "POST",
+              url: "/weather_via_ajax?latitude=" + latitude + "&longitude=" + longitude,
+              success: function(msg) {
+                  alert("Successfully retrieved weather information: " + msg);
+              },
+              failure: function(msg) {
+                  alert("Failed to retrieve weather information: " + msg);
+              }
+          });
+      }
+
+      function handleNoGeolocation(error)
+      {
+          //error is a PositionError object if the geolocation failed
+          if (error != null) {
+              alert("Geolocation service failed: " + error.message);
+          } else {
+              alert("Your browser doesn't support geolocation. Please manually enter your zip code");
+          }
+      }
+
+      $("body").load(initGeolocation());
+
+    </script>
+
 </head>
 <body>
   <ul class="hmenu">
