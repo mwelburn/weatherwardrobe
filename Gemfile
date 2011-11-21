@@ -29,12 +29,6 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :test do
-  # Pretty printed test output
-  gem 'turn', :require => false
-end
-
-# CUSTOM GEM DEFINITIONS
 
 gem 'devise'
 gem 'oa-oauth', :require => 'omniauth/oauth'
@@ -43,6 +37,19 @@ group :development do
   gem 'sqlite3'
   gem 'nifty-generators'
   gem 'ruby-debug19', :require => 'ruby-debug'
+
+  gem 'rspec'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+
+  # Pretty printed test output
+  gem 'turn', :require => false
 end
 
 group :production do
