@@ -30,7 +30,8 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 
-gem 'devise'
+gem 'devise', '1.4.5'
+gem 'omniauth', :git => 'git://github.com/intridea/omniauth.git' , :tag => 'v0.3.0.rc3'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 
 group :development do
@@ -55,5 +56,4 @@ end
 group :production do
   gem 'heroku'
   gem 'pg' #postgreSQL for heroku
-  gem 'execjs'
 end

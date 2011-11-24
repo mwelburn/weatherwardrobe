@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe User do
 
+  #TODO- stub out a facebook creation call and failure
+
   before(:each) do
     @attr = {
       :name => "Example User",
